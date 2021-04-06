@@ -1,0 +1,29 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+[application]
+
+config/name="Test Mipmaps"
+run/main_scene="res://test.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/size/width=256
+window/size/height=256
+window/size/test_width=512
+window/size/test_height=512
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[rendering]
+
+textures/default_filters/anisotropic_filtering_level=3
+environment/defaults/default_environment="res://default_env.tres"

@@ -1,0 +1,132 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://grid_vertical_plane.png" type="Texture2D" id=1]
+[ext_resource path="res://grid_tileable.png" type="Texture2D" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+
+[sub_resource type="PlaneMesh" id=2]
+size = Vector2( 256, 256 )
+
+[sub_resource type="StandardMaterial3D" id=3]
+shading_mode = 0
+albedo_texture = ExtResource( 2 )
+uv1_scale = Vector3( 128, 128, 128 )
+texture_filter = 5
+
+[sub_resource type="QuadMesh" id=4]
+size = Vector2( 2, 2 )
+
+[sub_resource type="StandardMaterial3D" id=5]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource( 1 )
+texture_filter = 5
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MovingPlane:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 1, -0.65 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MovingPlane:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ground:material/0:uv1_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 15.0
+loop = true
+step = 7.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("MovingPlane:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0, 7.5 ),
+"transitions": PackedFloat32Array( -2, -2 ),
+"update": 0,
+"values": [ Vector3( 0, 1, -0.65 ), Vector3( 0, 1, -5.15 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MovingPlane:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array( 0, 7.5 ),
+"transitions": PackedFloat32Array( -2, -2 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 30 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Ground:material/0:uv1_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PackedFloat32Array( 0, 15 ),
+"transitions": PackedFloat32Array( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -1, 0 ) ]
+}
+
+[node name="Test" type="WorldEnvironment"]
+environment = SubResource( 1 )
+script = null
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+script = null
+
+[node name="MovingPlane" type="MeshInstance3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.65 )
+mesh = SubResource( 4 )
+material/0 = SubResource( 5 )
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+script = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move_textures"
+anims/RESET = SubResource( 6 )
+anims/move_textures = SubResource( 7 )
+blend_times = [  ]
+script = null
