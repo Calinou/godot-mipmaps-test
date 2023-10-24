@@ -8,7 +8,7 @@ background_mode = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsfn3"]
 shading_mode = 0
-albedo_texture = ExtResource( "2" )
+albedo_texture = ExtResource("2")
 uv1_scale = Vector3(128, 128, 128)
 
 [sub_resource type="PlaneMesh" id="2"]
@@ -17,7 +17,7 @@ size = Vector2(256, 256)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64qox"]
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource( "1" )
+albedo_texture = ExtResource("1")
 
 [sub_resource type="QuadMesh" id="4"]
 size = Vector2(2, 2)
@@ -104,28 +104,28 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jiobq"]
 _data = {
-"RESET": SubResource( "6" ),
-"move_textures": SubResource( "7" )
+"RESET": SubResource("6"),
+"move_textures": SubResource("7")
 }
 
 [node name="Test" type="WorldEnvironment"]
-environment = SubResource( "1" )
+environment = SubResource("1")
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
-material_override = SubResource( "StandardMaterial3D_wsfn3" )
-mesh = SubResource( "2" )
+material_override = SubResource("StandardMaterial3D_wsfn3")
+mesh = SubResource("2")
 
 [node name="MovingPlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 1, -0.65)
-material_override = SubResource( "StandardMaterial3D_64qox" )
-mesh = SubResource( "4" )
+material_override = SubResource("StandardMaterial3D_64qox")
+mesh = SubResource("4")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "move_textures"
 libraries = {
-"": SubResource( "AnimationLibrary_jiobq" )
+"": SubResource("AnimationLibrary_jiobq")
 }
+autoplay = "move_textures"
