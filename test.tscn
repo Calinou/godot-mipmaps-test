@@ -104,8 +104,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jiobq"]
 _data = {
-"RESET": SubResource("6"),
-"move_textures": SubResource("7")
+&"RESET": SubResource("6"),
+&"move_textures": SubResource("7")
 }
 
 [node name="Test" type="WorldEnvironment"]
@@ -126,6 +126,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jiobq")
+&"": SubResource("AnimationLibrary_jiobq")
 }
 autoplay = "move_textures"
