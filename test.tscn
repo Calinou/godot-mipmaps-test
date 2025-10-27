@@ -117,7 +117,7 @@ material_override = SubResource("StandardMaterial3D_wsfn3")
 mesh = SubResource("2")
 
 [node name="MovingPlane" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, 0, 1, -0.65)
+transform = Transform3D(0.8660249, -0.5, 0, 0.5, 0.8660249, 0, 0, 0, 1, 0, 1, -0.65)
 material_override = SubResource("StandardMaterial3D_64qox")
 mesh = SubResource("4")
 
